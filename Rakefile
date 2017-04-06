@@ -1,4 +1,6 @@
-require 'net/http'
+require "bundler/gem_tasks"
+require "net/http"
+#task :default => :spec
 
 namespace :rates do
   desc "Update rates from the European Central Bank (ECB) feed"
