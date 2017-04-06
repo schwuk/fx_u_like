@@ -1,13 +1,24 @@
+PATH
+  remote: .
+  specs:
+    fx_u_like (0.1.0.pre)
+      nokogiri (~> 1.7.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    mini_portile2 (2.1.0)
+    nokogiri (1.7.1)
+      mini_portile2 (~> 2.1.0)
     rake (12.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  rake
+  bundler (~> 1.14)
+  fx_u_like!
+  rake (~> 12.0)
 
 BUNDLED WITH
    1.14.6

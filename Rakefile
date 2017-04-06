@@ -1,6 +1,15 @@
 require "bundler/gem_tasks"
+require "rake/testtask"
 require "net/http"
-#task :default => :spec
+
+desc "Run tests"
+task :default => :test
+
+Rake::TestTask.new do |t|
+  t.libs << "test"
+  t.test_files = FileList['test/**/test*.rb']
+  t.verbose = true
+end
 
 namespace :rates do
   desc "Update rates from the European Central Bank (ECB) feed"
