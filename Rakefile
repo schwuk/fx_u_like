@@ -1,9 +1,15 @@
 require "bundler/gem_tasks"
 require "rake/testtask"
+require 'rdoc/task'
 require "net/http"
 
 desc "Run tests"
 task :default => :test
+
+RDoc::Task.new do |rdoc|
+  rdoc.main = "README.rdoc"
+  rdoc.rdoc_files.include("README.rdoc", "lib/**/*.rb")
+end
 
 Rake::TestTask.new do |t|
   t.libs << "test"
