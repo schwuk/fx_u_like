@@ -8,7 +8,7 @@ module FxULike
     # Filename to retrieve rates from by default
     RATES = "rates.xml"
 
-    # Access to Nokogiri::XML::Document for testing
+    # Access to +Nokogiri::XML::Document+ for testing
     attr_reader :xml
 
     # Creates a Nokogiri::XML::Document to retrieve dates, currencies, and
@@ -29,6 +29,11 @@ module FxULike
       end
 
       @xml = Nokogiri::XML(xml)
+    end
+
+    # Returns an +Array+ of the dates available in the current file
+    def dates
+      return @xml.xpath('//@time').map { |date| date.to_s }
     end
   end
 end

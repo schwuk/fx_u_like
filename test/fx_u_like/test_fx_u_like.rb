@@ -60,4 +60,19 @@ class TestExchangeRate < Test::Unit::TestCase
     fx = FxULike::ExchangeRate.new
     assert(fx.xml.xml?)
   end
+
+  def test_dates
+    expected = ['2017-04-05', '2017-04-04']
+    fx = FxULike::ExchangeRate.new(xml: XML)
+
+    assert(fx.respond_to? 'dates')
+    assert_equal(expected, fx.dates)
+  end
+
+  def test_dates_with_empty_xml
+    expected = []
+    fx = FxULike::ExchangeRate.new(xml: "")
+    
+    assert_equal(expected, fx.dates)
+  end
 end
