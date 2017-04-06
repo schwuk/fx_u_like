@@ -65,7 +65,7 @@ class TestExchangeRate < Test::Unit::TestCase
     expected = ['2017-04-05', '2017-04-04']
     fx = FxULike::ExchangeRate.new(xml: XML)
 
-    assert(fx.respond_to? 'dates')
+    assert_respond_to(fx, 'dates')
     assert_equal(expected, fx.dates)
   end
 
@@ -80,7 +80,53 @@ class TestExchangeRate < Test::Unit::TestCase
     expected = ['EUR', 'USD', 'GBP', 'AUD', 'CAD']
     fx = FxULike::ExchangeRate.new(xml: XML)
 
-    assert(fx.respond_to? 'currencies')
+    assert_respond_to(fx, 'currencies')
     assert_equal(expected, fx.currencies)
+  end
+
+  def test_currencies_with_empty_xml
+    expected = []
+    fx = FxULike::ExchangeRate.new(xml: "")
+
+    assert_equal(expected, fx.currencies)
+  end
+
+  def test_at
+    fx = FxULike::ExchangeRate.new(xml: XML)
+
+    assert_respond_to(fx, 'at')
+    expected = 0.8008053942685895 # (1.0/1.0678)*0.8551
+
+    assert_equal(expected, fx.at('2017-04-05', 'USD', 'GBP'))
+  end
+
+  def test_at_invalid_date
+    fx = FxULike::ExchangeRate.new(xml: XML)
+    assert_raise FxULike::DateError do
+      fx.at('1970-01-01', 'FOO', 'BAR')
+    end
+  end
+
+  def test_at_invalid_from_currency
+    fx = FxULike::ExchangeRate.new(xml: XML)
+    assert_raise FxULike::CurrencyError do
+      fx.at('2017-04-05', 'FOO', 'EUR')
+    end
+  end
+
+  def test_at_invalid_to_currency
+    fx = FxULike::ExchangeRate.new(xml: XML)
+    assert_raise FxULike::CurrencyError do
+      fx.at('2017-04-05', 'EUR', 'BAR')
+    end
+  end
+
+  def test_at_euros
+    fx = FxULike::ExchangeRate.new(xml: XML)
+
+    assert_respond_to(fx, 'at')
+    expected = 1.0 # (1.0/1.0)*1.0
+
+    assert_equal(expected, fx.at('2017-04-05', 'EUR', 'EUR'))
   end
 end
