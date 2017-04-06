@@ -7,6 +7,7 @@ desc "Run tests"
 task :default => :test
 
 RDoc::Task.new do |rdoc|
+  rdoc.rdoc_dir = "doc"
   rdoc.main = "README.rdoc"
   rdoc.rdoc_files.include("README.rdoc", "lib/**/*.rb")
 end
