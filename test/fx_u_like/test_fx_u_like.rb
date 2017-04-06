@@ -72,7 +72,15 @@ class TestExchangeRate < Test::Unit::TestCase
   def test_dates_with_empty_xml
     expected = []
     fx = FxULike::ExchangeRate.new(xml: "")
-    
+
     assert_equal(expected, fx.dates)
+  end
+
+  def test_currencies
+    expected = ['EUR', 'USD', 'GBP', 'AUD', 'CAD']
+    fx = FxULike::ExchangeRate.new(xml: XML)
+
+    assert(fx.respond_to? 'currencies')
+    assert_equal(expected, fx.currencies)
   end
 end

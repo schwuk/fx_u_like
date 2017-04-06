@@ -5,10 +5,10 @@ require "fx_u_like/version"
 module FxULike
 
   class ExchangeRate
-    # Filename to retrieve rates from by default
+    # Filename to retrieve rates from by default.
     RATES = "rates.xml"
 
-    # Access to +Nokogiri::XML::Document+ for testing
+    # Access to +Nokogiri::XML::Document+ for testing.
     attr_reader :xml
 
     # Creates a Nokogiri::XML::Document to retrieve dates, currencies, and
@@ -31,9 +31,22 @@ module FxULike
       @xml = Nokogiri::XML(xml)
     end
 
-    # Returns an +Array+ of the dates available in the current file
+    # Returns an +Array+ of the dates available in the current file.
     def dates
-      return @xml.xpath('//@time').map { |date| date.to_s }
+      return get_strings('//@time')
     end
+
+    # Returns an +Array+ of currencies (plus 'EUR') from the most recent date
+    # in the current file.
+    def currencies
+      return get_strings('//xmlns:Cube[1]/xmlns:Cube/@currency').unshift('EUR')
+    end
+
+    private
+      # Returns an array of strings from the nodes that match the XPath
+      # expression.
+      def get_strings(xpath)
+        return @xml.xpath(xpath).map { |n| n.to_s }
+      end
   end
 end
