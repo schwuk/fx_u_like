@@ -2,19 +2,13 @@
 
 Foreign Exchange (FX) Rates and Converter.
 
+This consists of two parts: a module and a sample web API & interface.
+
 == Installation
 
-Add this line to your application's Gemfile:
-
-  gem 'fx_u_like'
-
-And then execute:
+Execute the following:
 
   $ bundle install
-
-Or install it yourself as:
-
-  $ gem install fx_u_like
 
 == Usage
 
@@ -27,6 +21,25 @@ Use the following command to fetch the latest version of that file:
   $ bundle exec rake rates:update
 
 This should ideally be run on a daily schedule e.g., with +cron+
+
+=== Sample web API & interface
+
+  $ bundle exec ruby web.rb
+
+You can now access the application at http://localhost:4567/.
+
+The following endpoints are available through the API:
+
+- /dates – Dates available in the current rates file
+- /currencies - Currencies available for conversion between
+- /rate/<+date+>/<+from+>/<+to+> - Returns the rate between the +from+ and +to+ currencies on the provided +date+
+
+==== (Re-)building the JavaScript bundle
+
+A pre-built version of the JavaScript bundle is already committed. If you need to rebuild this, run:
+
+  $ npm install
+  $ node_modules/.bin/brunch build
 
 == Development
 

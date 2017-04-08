@@ -95,6 +95,8 @@ class TestExchangeRate < Test::Unit::TestCase
     fx = FxULike::ExchangeRate.new(xml: XML)
 
     assert_respond_to(fx, 'at')
+    # For reference: on 2017-04-06, 1.00USD == 0.8019376540GBP
+    # http://www.xe.com/currencytables/?from=USD&date=2017-04-06
     expected = 0.8008053942685895 # (1.0/1.0678)*0.8551
 
     assert_equal(expected, fx.at('2017-04-05', 'USD', 'GBP'))
