@@ -5,10 +5,10 @@ import { createStore } from 'redux';
 import axios from 'axios';
 import moment from 'moment';
 
-import App from 'containers/App';
+import App from '@/containers/App';
 
-import fxApp from 'store/reducers';
-import { setDate, setDates, setCurrencies } from 'store/actions';
+import fxApp from '@/store/reducers';
+import { setDate, setDates, setCurrencies } from '@/store/actions';
 
 const date = moment().format('YYYY-MM-DD');
 const preloadedState = {
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
     <Provider store={store}>
       <App />
-    </Provider>,
+    </Provider>
     document.getElementById('container')
   );
 });

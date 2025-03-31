@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CurrencyAmount from '../containers/CurrencyAmount';
-import CurrencyChooser from '../containers/CurrencyChooser';
+import CurrencyAmount from '@/containers/CurrencyAmount';
+import CurrencyChooser from '@/containers/CurrencyChooser';
 
 export default class Currency extends React.Component {
   render() {

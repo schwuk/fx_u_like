@@ -8,7 +8,9 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "repository": {
     "type": "git",
@@ -22,15 +24,15 @@
   "homepage": "https://github.com/schwuk/fx_u_like#readme",
   "private": true,
   "devDependencies": {
-    "axios": "^0.16.0",
-    "babel-brunch": "^6.1.1",
-    "babel-preset-latest": "^6.24.1",
-    "babel-preset-react": "^6.24.1",
-    "brunch": "^2.10.9",
-    "react": "^15.4.2",
-    "react-datepicker": "^0.44.0",
-    "react-dom": "^15.4.2",
-    "react-redux": "^5.0.3",
-    "redux": "^3.6.0",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "@vitejs/plugin-react": "^4.3.4",
+    "axios": "^1.8.4",
+    "react": "^19.1.0",
+    "react-datepicker": "^8.2.1",
+    "react-dom": "^19.1.0",
+    "react-redux": "^9.2.0",
+    "redux": "^5.0.1",
+    "vite": "^6.2.4"
   }
 }

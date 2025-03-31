@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { setFromCurrency, setToCurrency } from '../store/actions';
+import { setFromCurrency, setToCurrency } from '@/store/actions';
 
-import CurrencyChooser from '../components/CurrencyChooser';
+import CurrencyChooser from '@/components/CurrencyChooser';
 
 
 const mapStateToProps = (state) => {

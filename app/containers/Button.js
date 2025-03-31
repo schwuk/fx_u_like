@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { setToAmount } from '../store/actions';
+import { setToAmount } from '@/store/actions';
 
-import Button from '../components/Button';
+import Button from '@/scomponents/Button';
 
 
 const mapStateToProps = (state) => {

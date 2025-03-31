@@ -1,8 +1,8 @@
 import { connect } from 'react-redux'
-import CurrencyConverter from '../components/CurrencyConverter'
+import CurrencyConverter from '@/components/CurrencyConverter'
 
-import DateChooser from '../components/DateChooser';
-import Currency from '../components/Currency';
+import DateChooser from '@/components/DateChooser';
+import Currency from '@/components/Currency';
 
 
 const mapStateToProps = (state) => {

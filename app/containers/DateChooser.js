@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
-import { setDate } from '../store/actions';
+import { setDate } from '@/store/actions';
 
-import DateChooser from '../components/DateChooser';
+import DateChooser from '@/components/DateChooser';
 
 
 const mapStateToProps = (state) => {

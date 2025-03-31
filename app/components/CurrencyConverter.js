@@ -1,8 +1,8 @@
 import React from 'react';
 
-import DateChooser from '../containers/DateChooser';
-import Currency from './Currency';
-import Button from '../containers/Button';
+import DateChooser from '@/containers/DateChooser';
+import Currency from '@/Currency';
+import Button from '@/containers/Button';
 
 
 // CurrencyConverter
