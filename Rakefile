@@ -21,10 +21,28 @@ end
 namespace :rates do
   desc 'Update rates from the European Central Bank (ECB) feed'
   task :update do
-    # http://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml
-    Net::HTTP.start('www.ecb.europa.eu') do |http|
-      resp = http.get('/stats/eurofxref/eurofxref-hist-90d.xml')
-      open('rates.xml', 'w') { |file| file.write(resp.body) }
+    require 'uri'
+
+    url = URI('https://www.ecb.europa.eu/stats/eurofxref/eurofxref-hist-90d.xml')
+
+    # Follow redirects
+    response = nil
+    Net::HTTP.start(url.host, url.port, use_ssl: url.scheme == 'https') do |http|
+      loop do
+        response = http.request(Net::HTTP::Get.new(url))
+        break unless response.is_a?(Net::HTTPRedirection)
+
+        url = URI(response['location'])
+        puts "Redirected to #{url}"
+      end
+    end
+
+    # Write the response body to a file
+    if response.is_a?(Net::HTTPSuccess)
+      File.open('rates.xml', 'w') { |file| file.write(response.body) }
+      puts 'Rates updated successfully.'
+    else
+      puts "Failed to fetch rates: #{response.code} #{response.message}"
     end
   end
 end
