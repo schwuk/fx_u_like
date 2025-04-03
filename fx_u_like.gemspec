@@ -20,10 +20,10 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.14"
-  spec.add_development_dependency "rake", "~> 12.0"
-  spec.add_development_dependency "test-unit", "~> 3.1"
+  spec.add_development_dependency "bundler", "~> 2.6"
+  spec.add_development_dependency "rake", "~> 13.2"
+  spec.add_development_dependency "test-unit", "~> 3.6"
 
-  spec.add_runtime_dependency "nokogiri", "~> 1.7"
-  spec.add_runtime_dependency "sinatra", "~> 1.4"
+  spec.add_runtime_dependency "nokogiri", "~> 1.18"
+  spec.add_runtime_dependency "sinatra", "~> 4.1"
 end
